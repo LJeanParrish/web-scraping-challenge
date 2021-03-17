@@ -1,7 +1,10 @@
-from splinter import Browser
 from bs4 import BeautifulSoup as bs
-import time
+import pandas as pd
+import requests
+import pymongo
+from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
+from flask import Flask, render_template, redirect
 
 
 def scrape_info():
