@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -30,7 +31,7 @@
     <div class="row" id="image">
       <div class="col-md-6">
         <h2><strong>Alien Landscapes</strong></h2>
-        <h3 class="heading">{{mars.featured_image_url}}</h3>
+        <img class="col-md-6 border" src="{{mars.featured_image_url}}" alt="Features Mars Image">
       </div>
     </div>
 
@@ -47,7 +48,9 @@
     <div class="row" id="hemispheres">
       <div class="col-md-6">
         <h2><strong>The Sides of Mars</strong></h2>
-        <h3 class="heading">{{mars.mars_hemispheres}}</h3>
+         <div>
+          <img width="400 px" height="400 px" src="{{mars.mars_hemispheres}}">
+        </div>
       </div>
     </div>
 
