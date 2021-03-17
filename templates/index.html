@@ -17,13 +17,49 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
     </div>
 
-    <!-- Phone Listings -->
-    <div class="row" id="craiglist-listings">
+    <!-- Mars Headlines -->
+    <div class="row" id="headlines">
       <div class="col-md-12">
-        <h4 class="heading">{{listings.price}} {{listings.headline}}</h4>
-        <small>{{listings.reviews}}</small>
+        <h2><strong>Mars Headlines</strong></h2>
+        <h3 class="heading">{{mars.news_title}}</h3>
+          <p>{{mars.news_p}}</p>        
       </div>
     </div>
+
+    <!--Mars Featured Image-->
+    <div class="row" id="image">
+      <div class="col-md-6">
+        <h2><strong>Alien Landscapes</strong></h2>
+        <h3 class="heading">{{mars.featured_image_url}}</h3>
+      </div>
+    </div>
+
+
+    <!--Mars Facts-->
+    <div class="row" id="facts">
+      <div class="col-md-6">
+        <h2><strong>I Bet You Didn't Know...</strong></h2>
+        <h3 class="heading">{{mars.facts_df}}</h3>
+      </div>
+    </div>
+
+    <!--Mars Hemispheres-->
+    <div class="row" id="hemispheres">
+      <div class="col-md-6">
+        <h2><strong>The Sides of Mars</strong></h2>
+        <h3 class="heading">{{mars.mars_hemispheres}}</h3>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
