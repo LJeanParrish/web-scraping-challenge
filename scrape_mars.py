@@ -19,16 +19,14 @@ def scrape():
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
     html = browser.html
-    response = requests.get(url)
     soup = bs(html, 'html.parser')
     news_title = soup.find_all('div', class_='content_title')[1].text
-    news_p = soup.find_all('div', class_='article_teaser_body')[0].text
+    news_p = soup.find('div', class_='article_teaser_body').text
 
     #Scraped jpl images
     jpl_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
     browser.visit(jpl_url)
     jpm_html = browser.html
-    response = requests.get(jpl_url)
     soup_image = bs(jpm_html, 'html.parser')
     image = soup_image.find_all('img', class_='headerimage fade-in')[0]['src']
     cleaned_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/'
@@ -38,7 +36,7 @@ def scrape():
     facts_url = 'https://space-facts.com/mars/'
     tables = pd.read_html(facts_url)
     facts_df = tables[0]
-    facts_df.columns = ["Description", "Value"]
+    facts_df = facts_df.rename(columns={0:"Description", 1:"Value"})
     html_table = facts_df.to_html()
 
     #Scraped Hemisphere Data
@@ -46,7 +44,6 @@ def scrape():
     image_url = 'https://astrogeology.usgs.gov'
     browser.visit(geo_url)
     geo_html = browser.html
-    response = requests.get(geo_url)
     soup_geo = bs(geo_html, 'html.parser')
     items = soup_geo.find('div', class_='collapsible results')
     images = items.find_all('div', class_='item')
@@ -74,7 +71,7 @@ def scrape():
         "News_Headlines": news_title,
         "News_Tagline": news_p,
         "Featured_Image": featured_image_url,
-        "Mars_Facts":facts_df,
+        "Mars_Facts":html_table,
         "Mars_Hemispheres": mars_hemispheres}
 
     # Close the browser after scraping

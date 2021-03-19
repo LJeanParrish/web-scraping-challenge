@@ -7,63 +7,62 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="./styles.css"> -->
 </head>
 
-<body>
+<body style="padding: 10; margin: 0; font-family:fantasy; font-size: 22px;
+line-height: 150%; color: #333;background-color:linen">
+  
   <div class="container">
 
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center"id="jumbo"style="background-color:firebrick; color:linen; font-size: 85; font-weight: bolder; font-family: fantasy" >
       <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button" style="background-color: dimgray">Scrape New Data!</a></p>
     </div>
 
     <!-- Mars Headlines -->
     <div class="row" id="headlines">
       <div class="col-md-12">
-        <h2><strong>Mars Headlines</strong></h2>
-        <h3 class="heading">{{mars.news_title}}</h3>
-          <p id="news">{{mars.news_p}}</p>        
+        <h2 style="color:firebrick; font-family:fantasy"><strong>Mars Headlines</strong></h2>
+        <h3 class="heading" style="color:#333; font-size: 28px; font-family: fantasy;
+        text-align: left; padding-right: 20px;">{{mars.News_Headlines}}</h3>
+          <p style="font-family: fantasy; font-size:medium; padding:10px" id="news">{{mars.News_Tagline}}</p>        
       </div>
     </div>
 
     <!--Mars Featured Image-->
     <div class="row" id="image">
       <div class="col-md-6">
-        <h2><strong>Alien Landscapes</strong></h2>
-        <img class="col-md-6 border" src="{{mars.featured_image_url}}" alt="Features Mars Image">
+        <h2 style="color:firebrick; font-family:fantasy"><strong>Alien Landscapes</strong></h2>
+        <img class="col-md-6 border" src="{{mars.Featured_Image}}" alt="Features Mars Image">
       </div>
     </div>
 
 
     <!--Mars Facts-->
     <div class="row" id="facts">
-      <div class="col-md-6">
-        <h2><strong>I Bet You Didn't Know...</strong></h2>
-        <h3 class="heading">{{mars.facts_df}}</h3>
+      <div class="col-md-5">
+        <h2 style="color:firebrick; font-family:fantasy"><strong>I Bet You Didn't Know...</strong></h2>
+        <h3 class="heading" style="color:#333; padding-top:25px; padding-bottom:25px;padding-left:25px; font-size: 20px; font-family: fantasy;
+        text-align: left; padding-right: 20px; background-color:#fff">{{mars.Mars_Facts|safe}}</h3>
       </div>
     </div>
 
     <!--Mars Hemispheres-->
     <div class="row" id="hemispheres">
       <div class="col-md-6">
-        <h2><strong>The Sides of Mars</strong></h2>
-         <div>
-          <img width="400 px" height="400 px" src="{{mars.mars_hemispheres}}">
+        <h2 style="color:firebrick; font-family:fantasy"><strong>The Sides of Mars</strong></h2>
+        {% for x in mars.Mars_Hemispheres %}
+        <div class=" col-3 col-md-6">
+          <div class="thumbnail">
+          <img src="{{x['img_url']|default('static/images/error.png', true)}}" alt="...">
+          <h5 id="caption">{{x['title']}}</h5>
         </div>
+          <br/>
+        </div>
+        {% endfor %}
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
   </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

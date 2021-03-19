@@ -9,7 +9,7 @@ body {
     background-color:linen;
    }
 
-.jumbotron{background-color:firebrick;
+#jumbo{background-color:firebrick;
 color:linen;
 font-size: 85;
 font-weight: bolder;
